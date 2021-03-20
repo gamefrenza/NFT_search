@@ -13,7 +13,8 @@ router.get('/', function(req, res, next) {
 	
 	if(input.includes('mintable.app')){
 		varContent = 'Mintable has all blockchain information on the web page.';
-		res.render('result', { title: 'NFT Simple Search: Result', varContent: varContent});
+		//res.render('result', { title: 'NFT Simple Search: Result', varContent: varContent});
+		res.render('mintable', { title: 'NFT Simple Search: Mintable'});
 		return;
 	}
 	
