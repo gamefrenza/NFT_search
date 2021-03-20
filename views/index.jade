@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	h1 NFT Search Engine for Creators
+	p 
+	form(method="GET" action="/search")
+		label( for="inputURL" class="sr-only") Please paste NFT item URL here:
+		br
+		input(name="inputurl" id="inputURL" class="form-control" size="100" required autofocus)
+		p
+		button(class=buttonClass type="submit") Search
+	p
+	#{version}
