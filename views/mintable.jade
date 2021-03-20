@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	h1 At Mintable web page, please find "Contract Address" and "Token ID" and enter here
+	p 
+	form(method="GET" action="/mintable")
+		label( for="contract" class="sr-only") Please copy & paste Contract Address from Mintable web page:
+		br
+		input(name="contract" id="contract" class="form-control" size="100" required autofocus)
+		p
+		label( for="tokenid" class="sr-only") Please copy & paste Token ID from Mintable web page:
+		br
+		input(name="tokenid" id="tokenid" class="form-control" size="100" required autofocus)
+		p
+		button(class=buttonClass type="submit") Search
+	p
+	#{version}
