@@ -3,11 +3,26 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-	var contract = req.query.contract;
-	var tokenId = req.query.tokenid;
-	var etherscanURL = 'https://etherscan.io/token/' + contract + '?a=' + tokenId;
-	//res.send('/: in mintable.js: GET with contract=' + contract + '; tokenid=' + tokenId + '; Etherscan URL=' + etherscanURL);
-	console.log('LOG: Etherscan URL = ' + etherscanURL);
+	const contract = req.query.contract;
+	const tokenId = req.query.tokenid;
+	
+	// Validate contract address format
+	if (!/^0x[a-fA-F0-9]{40}$/.test(contract)) {
+		return res.render('result', {
+			title: 'Error',
+			varContent: 'Invalid contract address format'
+		});
+	}
+	
+	// Validate token ID format
+	if (!/^\d+$/.test(tokenId)) {
+		return res.render('result', {
+			title: 'Error',
+			varContent: 'Invalid token ID format'
+		});
+	}
+
+	const etherscanURL = `https://etherscan.io/token/${contract}?a=${tokenId}`;
 	res.redirect(etherscanURL);
 });
 
